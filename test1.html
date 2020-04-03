@@ -6,9 +6,18 @@
         
     </head>
     <body>
-        <p>Where does the shield go?</p>
+        <script>
+            function activate(color) {
+                document.body.style.background = color;
+                document.getElementById("p").style.color = 'white';
+                var audioElement = new Audio('shieldremix.mp3');
+                audioElement.play();
+            }
+                
+        </script>
+        <p id="p">Where does the shield go?</p>
         <div id="grid-container">
-            <div class="grid-item1"><button class="buttons">North</button></div>
+            <div class="grid-item1"><button class="buttons" onclick="activate('rgb(46, 46, 46)');">North</button></div>
             <div class="grid-item2"><button class="buttons">West</button></div>
             <div class="grid-item3"><button class="buttons">East</button></div>
             <div class="grid-item4"><button class="buttons">South</button></div>
