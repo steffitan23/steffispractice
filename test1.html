@@ -3,24 +3,42 @@
     <head>
         <link rel = "stylesheet" type = "text/css" href = "teststyle.css" />
         <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
-        
+    
     </head>
     <body>
+        <audio id="audioElement">
+            <source src="shieldremix.mp3" type="audio/mp3">
+            Your browser does not support the audio element.
+          </audio>
+          
         <script>
             function activate(color) {
                 document.body.style.background = color;
                 document.getElementById("p").style.color = 'white';
-                var audioElement = new Audio('shieldremix.mp3');
-                audioElement.play();
+                audioElement.play("shieldremix.mp3");
+                document.getElementById("reset").style.color = 'white';
+                document.getElementById("reset").style.background='rgb(46, 46, 46)';
             }
-                
+
+            function deactivate(){
+                document.body.style.background = 'white';
+                document.getElementById("p").style.color = 'black';
+                audioElement.pause();
+                audioElement.currentTime = 0;
+                document.getElementById("reset").style.color = '#4b4b4b';
+                document.getElementById("reset").style.backgroundColor='white';
+            }
+
+
         </script>
+        <script src="https://kit.fontawesome.com/f5c236edb2.js" crossorigin="anonymous"></script>    
         <p id="p">Where does the shield go?</p>
         <div id="grid-container">
             <div class="grid-item1"><button class="buttons" onclick="activate('rgb(46, 46, 46)');">North</button></div>
             <div class="grid-item2"><button class="buttons">West</button></div>
             <div class="grid-item3"><button class="buttons">East</button></div>
             <div class="grid-item4"><button class="buttons">South</button></div>
+            <div class="grid-item5"><button id="reset" onclick="deactivate();"><i class="fas fa-redo fa-3x"></i></button></div>
         </div>
     </body>
 </html>

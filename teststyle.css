@@ -39,6 +39,11 @@ body {
 .grid-item4 {
     grid-area: 3 / 2 / 3 / 2; 
 }
+
+.grid-item5 {
+    grid-area: 2 / 2 / 2 / 2; 
+}
+
 .buttons {
 	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
 	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
@@ -90,5 +95,27 @@ body {
 .buttons:active {
     top:7px;
     box-shadow: inset 0px 1px 0px white, inset 0px -1px 0px rgb(46, 46, 46);
-    text-shadow: 0px 1px 1px rgba(255,255,255,0.3);
+    text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.302);
+}
+
+#reset {
+    width: 140px;
+    height:50px;
+    margin-top: 5px;
+    background-color: white;
+    border: 0px;
+    color: #4b4b4b;
+    transition: background-color 3s, color 3s;
+}
+
+#reset:hover {
+    color:#c2c2c2!important;
+}
+
+.buttons:focus {
+    outline:0;
+}
+
+#reset:focus {
+    outline:0;
 }
