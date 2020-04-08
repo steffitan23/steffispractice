@@ -25,12 +25,12 @@ function keypressLog(event){
 
 function expressInputValue(inputVal) {
     var listOutputNumber = 'list' + listNumber;
-    console.log(listOutputNumber);
     document.getElementById(listOutputNumber).innerHTML = inputVal;
     alertMessage();
     listNumber++;
     listAppear(listNumber);
     clearInput('todoinput');
+    return listNumber;
 }
 
 function listAppear(listNumber) {
@@ -83,11 +83,58 @@ function removeListTrack(listTrackNumber) {
         case 5:
             document.getElementById("list5").innerHTML = '';
             numberofClicks++;
-            deleteRemaining(numberofClicks);
+            deleteRemainingSelector();
+            return numberofClicks;
 }
 }
 
-function deleteRemaining(numberofClicks) {
+function deleteRemainingSelector() {
+    console.log(listNumber);
+    switch(listNumber) {
+        case 2:
+            deleteRemaining1();
+            alert("Great job!");
+            break;
+        case 3:
+            deleteRemaining2();
+            break;
+        case 4:
+            deleteRemaining3();
+        break;
+        case 5:
+            deleteRemaining4();
+        break;
+        case 6:
+            deleteRemaining5();
+    }
+        
+}
+
+function deleteRemaining1() {
+    document.getElementById("line1").style.display = "none";
+}
+
+function deleteRemaining2() {
+    document.getElementById("line2").style.display = "none";
+    listNumber--;
+}
+
+function deleteRemaining3() {
+    document.getElementById("line3").style.display = "none";
+    listNumber--;
+}
+
+function deleteRemaining4() {
+    document.getElementById("line4").style.display = "none";
+    listNumber--;
+}
+
+function deleteRemaining5() {
+    document.getElementById("line5").style.display = "none";
+    listNumber--;
+}
+
+/* function deleteRemaining5() {
     switch (numberofClicks) {
         case 1:
             document.getElementById("line5").style.display = "none";
@@ -107,3 +154,4 @@ function deleteRemaining(numberofClicks) {
             break;
 }
 }
+ */
