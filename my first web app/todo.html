@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = "stylesheet" type = "text/css" href = "styles.css" />
+    <script type = "text/javascript" src = "todo.js"></script>
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+    <header>
+        <h1>Study Tracker</h1>
+    </header>
+</head>
+<body>
+    <div id="todo">
+        <h2>What do you want to do today?</h2>
+        <input type="text" name="task" id="todoinput" placeholder="Add a Todo" onkeypress="keypressLog(event);"/>
+        <div id="todopoints">
+            <h3>Your Top 5</h3>
+            <ol>
+                <div id="line1"><li id="list1"></li><button class="donebutton" id="button1">Done</button></div>
+                <div id="line2"><li id="list2"></li><button class="donebutton" id="button2">Done</button></div>
+                <div id="line3"><li id="list3"></li><button class="donebutton" id="button3">Done</button></div>
+                <div id="line4"><li id="list4"></li><button class="donebutton" id="button4">Done</button></div>
+                <div id="line5"><li id="list5"></li><button class="donebutton" id="button5">Done</button></div>
+            </ol>
+        </div>
+    </div>
+<!--     <div id="resetbutton">
+        <button></button>
+    </div> -->
+</body>
+</html>
+
