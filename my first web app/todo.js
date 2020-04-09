@@ -12,7 +12,7 @@ window.onload=function(){
     listTrack3.addEventListener("click", function(){ removeListTrack(3); });
     listTrack4.addEventListener("click", function(){ removeListTrack(4); });
     listTrack5.addEventListener("click", function(){ removeListTrack(5); });
-  }
+}
 
 function keypressLog(event){
     var todoInput = document.getElementById("todoinput").value;
@@ -94,16 +94,19 @@ function deleteRemainingSelector() {
         case 2:
             deleteRemaining1();
             alert("Great job!");
+            listNumber = 1;
+            confetti.start()
+            setTimeout(function(){ confetti.stop(); }, 3000);
             break;
         case 3:
             deleteRemaining2();
             break;
         case 4:
             deleteRemaining3();
-        break;
+            break;
         case 5:
             deleteRemaining4();
-        break;
+            break;
         case 6:
             deleteRemaining5();
     }
@@ -133,25 +136,3 @@ function deleteRemaining5() {
     document.getElementById("line5").style.display = "none";
     listNumber--;
 }
-
-/* function deleteRemaining5() {
-    switch (numberofClicks) {
-        case 1:
-            document.getElementById("line5").style.display = "none";
-            break;
-        case 2:
-            document.getElementById("line4").style.display = "none";
-            break;
-        case 3:
-            document.getElementById("line3").style.display = "none";
-            break;
-        case 4:
-            document.getElementById("line2").style.display = "none";
-            break;
-        case 5:
-            document.getElementById("line1").style.display = "none";
-            alert("Great job!")
-            break;
-}
-}
- */
