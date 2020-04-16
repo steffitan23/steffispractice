@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sudoku Solver</title>
+    <link href="main.css" rel="stylesheet" type="text/css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="heading_container">
+        <div class="heading_title">
+          <span
+            style="font-family: verdana; font-size: 50px; font-weight: bold;"
+            >Sudoku Solver</span
+          >
+        </div>
+        <div class="heading_info">
+          <span style="font-family: comic-sans; font-size: 12px;"
+            >By Yiyuan Lee.
+            <a
+              href="http://codemyroad.wordpress.com/2014/05/01/solving-sudoku-by-backtracking/"
+              >codemyroad.wordpress.com</a
+            ></span
+          >
+        </div>
+      </div>
+
+      <table class="sudoku_grid" cellspacing="2" cellpadding="0"></table>
+
+      <div class="controls_container">
+        <div class="button solve_button" onclick="solve()">
+          Solve
+        </div>
+
+        <div class="button clear_button" onclick="clearGrid()">
+          Clear
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="jquery-1.11.2.min.js"></script>
+
+    <script type="text/javascript">
+      $(document).ready(function () {
+        //check that document is loaded
+        // Main grid
+        for (var r = 0; r < 3; r++) {
+          var row = $("<tr/>");
+          for (var c = 0; c < 3; c++) {
+            var col = $("<td/>");
+            // Sub grid
+            var _table = $(
+              '<table class="sub_grid" cellspacing="2" cellpadding="0"/>'
+            );
+            for (var _r = 0; _r < 3; _r++) {
+              var _row = $("<tr/>");
+              for (var _c = 0; _c < 3; _c++) {
+                var _col = $("<td/>");
+                var _cell = $(
+                  '<input type="text" id="c' +
+                    (r * 3 + _r).toString() +
+                    (c * 3 + _c).toString() +
+                    '"" class="cell" maxlength="1" onkeypress="return isNumberKey(event)" onchange="onTextFieldChanged(event)"/>'
+                );
+                _col.append(_cell); //add vars deinifed to the back of the created rows and columns
+                _row.append(_col);
+              }
+              _table.append(_row);
+            }
+
+            col.append(_table);
+            row.append(col);
+          }
+          $(".sudoku_grid").append(row);
+        }
+      });
+    </script>
+
+    <script src="solver.js"></script>
+
+    <script type="text/javascript">
+      function isNumberKey(evt) {
+        var charCode = evt.which ? evt.which : event.keyCode;
+        if (charCode > 31 && (charCode < 49 || charCode > 57)) return false;
+        return true;
+      }
+
+      function onTextFieldChanged(evt) {
+        var caller = evt.target || evt.srcElement;
+        if (caller.value.length == 1) {
+          caller.style.backgroundColor = "#afffff";
+        } else {
+          caller.style.backgroundColor = "#ffffff";
+        }
+      }
+
+      function clearGrid() {
+        for (var row = 0; row < 9; row++) {
+          for (var column = 0; column < 9; column++) {
+            var cell = document.getElementById(
+              "c" + row.toString() + column.toString()
+            );
+            cell.value = null;
+            cell.style.backgroundColor = "#ffffff";
+            cell.readOnly = false;
+          }
+        }
+      }
+
+      function solve() {
+        var solver = new Solver(); //new instance of function
+        for (var row = 0; row < 9; row++) {
+          for (var column = 0; column < 9; column++) {
+            var cell = document.getElementById(
+              "c" + row.toString() + column.toString() //define each cell as this html element
+            );
+            var value = cell.value;
+            solver.working_grid[row][column] = value; //defining method parameters
+          } //getting the input into table
+        }
+        if (solver.solve()) {
+          //link to js file prototype solve function
+          for (var row = 0; row < 9; row++) {
+            for (var column = 0; column < 9; column++) {
+              var cell = document.getElementById(
+                "c" + row.toString() + column.toString()
+              );
+              cell.value = solver.working_grid[row][column];
+              cell.readOnly = true;
+            }
+          }
+        } else {
+          alert("No solutions found!");
+        }
+      }
+    </script>
+  </body>
+</html>
